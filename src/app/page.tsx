@@ -1,5 +1,7 @@
 // import { ModeToggle } from "@/components/ModeToggle";
 import MarkDownHeader from "@/components/MarkDownHeader";
+import MarkDownMain from "@/components/MarkDownMain";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -10,6 +12,8 @@ export default function Home() {
       </header> */}
       <main>
         <MarkDownHeader />
+        <MarkDownMain />
+        <Footer />
       </main>
     </>
   );
