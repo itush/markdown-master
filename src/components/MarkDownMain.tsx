@@ -72,12 +72,18 @@ export default function MarkDownMain({ markdown,setMarkdown }: MarkDownMainProps
     td: ({ ...props }) => (
       <td className="border border-gray-300 p-2" {...props} />
     ),
+
+    // Horizontal rule styling: Adding a border, padding, and rounded corners.
+    hr: ({ ...props }) => (
+      <hr className="my-4" {...props} />
+    ),
    
     // Blockquote styling: Adding a border, padding, and rounded corners.
     blockquote: ({ ...props }) => (
       <blockquote 
       className="border-l-8 border-gray-800 bg-gray-300 
-      rounded-md py-1 my-4 dark:bg-gray-500 dark:text-slate-900 dark:border-blue-800" {...props} />
+      rounded-md p-1 my-4 inline-block dark:bg-gray-500 
+      dark:text-slate-900 dark:border-blue-800" {...props} />
     ),
 
   };
