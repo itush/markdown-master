@@ -1,19 +1,23 @@
-"use client";
 
-import { useState, useEffect } from "react";
 import WordCounter from "./WordCounter";
 import UpDownLoad from "./UpDownLoad";
 import { ModeToggle } from "./ModeToggle";
 import { Grip } from 'lucide-react';
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent } from "@radix-ui/react-dropdown-menu";
 
-export default function MarkDownHeader() {
-    const [markdown, setMarkdown] = useState('');
+interface MarkDownHeaderProps {
+    markdown: string;
+    setMarkdown: (markdown: string) => void;
+  }
 
-    useEffect(() => {
 
-        localStorage.setItem('markdown-content', markdown);
-    }, [markdown]);
+export default function MarkDownHeader({ markdown, setMarkdown }: MarkDownHeaderProps) {
+    // const [markdown, setMarkdown] = useState('');
+
+    // useEffect(() => {
+
+    //     localStorage.setItem('markdown-content', markdown);
+    // }, [markdown]);
 
 
     return (

@@ -1,5 +1,4 @@
-"use client";
-import { useState } from "react";
+
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -7,11 +6,12 @@ import { Textarea } from "./ui/textarea";
 // import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 // import { oneDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 
-export default function MarkDownMain() {
-  // We'll store our markdown content in a state variable.
-  const [markdownContent, setMarkdownContent] = useState(
-    "# Welcome to MarkdownMaster!👋\n\n## This is your placeholder Markdown text.\n\n >Start editing in the Edit tab or upload your .md file.\n\n--- \n\n`Enjoy 😁` "
-  );
+interface MarkDownMainProps {
+  markdown: string;
+  setMarkdown: (markdown: string) => void;
+}
+
+export default function MarkDownMain({ markdown,setMarkdown }: MarkDownMainProps ) {
 
   // Custom renderers for headings
   const customComponents = {
@@ -54,7 +54,7 @@ export default function MarkDownMain() {
 
     // Code block styling: Adding a background color, padding, and rounded corners.
     code: ({ ...props }) => (
-      <code className="bg-stone-600 text-slate-200 rounded-md p-2" {...props} />
+      <code className="bg-stone-600 text-slate-200 rounded-md p-2 my-2" {...props} />
     ),
 
     // Inline code styling: Adding a background color, padding, and rounded corners.
@@ -77,12 +77,10 @@ export default function MarkDownMain() {
     blockquote: ({ ...props }) => (
       <blockquote 
       className="border-l-8 border-gray-800 bg-gray-300 
-      rounded-md p-4 dark:bg-gray-500 dark:text-slate-900 dark:border-blue-800" {...props} />
+      rounded-md py-1 my-4 dark:bg-gray-500 dark:text-slate-900 dark:border-blue-800" {...props} />
     ),
 
   };
-
-  
 
   return (
     // The Tabs parent should span the full available height/width between header and footer.
@@ -106,22 +104,17 @@ export default function MarkDownMain() {
           <ReactMarkdown 
             components={customComponents}
             remarkPlugins={[remarkGfm]}>
-            {markdownContent}
+            {markdown}
           </ReactMarkdown>
         </div>
       </TabsContent>
 
       {/* Edit Tab Content */}
       <TabsContent value="edit" className="flex flex-col h-screen w-screen overflow-auto p-4">
-        {/* <textarea
-          value={markdownContent}
-          onChange={(e) => setMarkdownContent(e.target.value)}
-          className="w-full h-[700px] p-4"
-          placeholder="Write your Markdown here..."
-        /> */}
+      
         <Textarea
-          value={markdownContent}
-          onChange={(e) => setMarkdownContent(e.target.value)}
+          value={markdown}
+          onChange={(e) => setMarkdown(e.target.value)}
           className="w-full h-[700px] p-4"
           placeholder="Write your Markdown here..."
         />
