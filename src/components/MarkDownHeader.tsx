@@ -6,19 +6,14 @@ import { ModeToggle } from "./ModeToggle";
 import { Grip } from 'lucide-react';
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent } from "@radix-ui/react-dropdown-menu";
 
+
 interface MarkDownHeaderProps {
     markdown: string;
     setMarkdown: (markdown: string) => void;
 }
 
 export default function MarkDownHeader({ markdown, setMarkdown }: MarkDownHeaderProps) {
-    // const [markdown, setMarkdown] = useState('');
-
-    // useEffect(() => {
-
-    //     localStorage.setItem('markdown-content', markdown);
-    // }, [markdown]);
-
+ 
 
     return (
         <>

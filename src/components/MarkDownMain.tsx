@@ -7,6 +7,7 @@ import remarkGfm from "remark-gfm";
 import { Textarea } from "./ui/textarea";
 import { SideBar } from "./SideBar";
 import FullScreenToggle from "./FullScreenToggle";
+import TextToSpeech from "./TextToSpeech";
 
 // import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 // import { oneDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
@@ -165,7 +166,11 @@ export default function MarkDownMain({ markdown, setMarkdown }: MarkDownMainProp
               {markdown}
             </ReactMarkdown>
             <div className="absolute top-0 right-0">
+              <div className="flex items-center gap-2">
+
+              <TextToSpeech text={markdown} />
               <FullScreenToggle targetRef={contentRef} />
+              </div>
             </div>
 
           </div>
