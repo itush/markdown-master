@@ -6,6 +6,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Textarea } from "./ui/textarea";
 import { SideBar } from "./SideBar";
+import FullScreenToggle from "./FullScreenToggle";
 
 // import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 // import { oneDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
@@ -17,11 +18,14 @@ interface MarkDownMainProps {
 
 export default function MarkDownMain({ markdown, setMarkdown }: MarkDownMainProps) {
 
+  // explain the next line: 
+  // The useRef hook is used to create a mutable reference to a DOM element.
   const contentRef = useRef<HTMLDivElement>(null);
 
   const scrollToHeading = useCallback((id: string) => {
     console.log('Scrolling to:', id);
     const element = contentRef.current?.querySelector(`#${id}`) as HTMLElement | null;
+
     if (element && contentRef.current) {
       console.log('Found element at offset:', element.offsetTop);
       const containerTop = contentRef.current.offsetTop;
@@ -134,6 +138,7 @@ export default function MarkDownMain({ markdown, setMarkdown }: MarkDownMainProp
   return (
     // The Tabs parent should span the full available height/width between header and footer.
     <main className="flex h-[800px]">
+
       <SideBar markdown={markdown} onHeadingClick={scrollToHeading} />
 
       <Tabs defaultValue="preview"
@@ -151,16 +156,22 @@ export default function MarkDownMain({ markdown, setMarkdown }: MarkDownMainProp
         </TabsList>
 
         {/* Preview Tab Content */}
-        <TabsContent ref={contentRef} value="preview" className="flex-1 p-4 overflow-y-auto">
+        <TabsContent ref={contentRef} value="preview" className="flex-1 p-4 overflow-y-auto relative">
           {/* Wrap ReactMarkdown in a div to apply typography styling */}
-          <div className="prose dark:prose-dark ">
+          <div className="prose dark:prose-dark">
             <ReactMarkdown
               components={customComponents}
               remarkPlugins={[remarkGfm]}>
               {markdown}
             </ReactMarkdown>
+            <div className="absolute bottom-0 right-0">
+              <FullScreenToggle targetRef={contentRef} />
+            </div>
+
           </div>
         </TabsContent>
+
+
 
         {/* Edit Tab Content */}
         <TabsContent value="edit" className="flex-1 p-4">
@@ -175,6 +186,8 @@ export default function MarkDownMain({ markdown, setMarkdown }: MarkDownMainProp
         </TabsContent>
 
       </Tabs>
+
+
     </main>
   );
 };
