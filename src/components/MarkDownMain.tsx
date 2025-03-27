@@ -8,6 +8,8 @@ import { Textarea } from "./ui/textarea";
 import { SideBar } from "./SideBar";
 import FullScreenToggle from "./FullScreenToggle";
 import TextToSpeech from "./TextToSpeech";
+import ResetEditorButton from "./ResetEditorButton";
+import { UseFullscreenStatus } from "@/hooks/UseFullScreen";
 
 // import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 // import { oneDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
@@ -15,11 +17,13 @@ import TextToSpeech from "./TextToSpeech";
 interface MarkDownMainProps {
   markdown: string;
   setMarkdown: (markdown: string) => void;
+  onReset: () => void;
 }
 
-export default function MarkDownMain({ markdown, setMarkdown }: MarkDownMainProps) {
+export default function MarkDownMain({ markdown, setMarkdown, onReset }: MarkDownMainProps) {
 
-  // explain the next line: 
+  const isFullscreen = UseFullscreenStatus(); // Get the fullscreen state
+
   // The useRef hook is used to create a mutable reference to a DOM element.
   const contentRef = useRef<HTMLDivElement>(null);
 
@@ -167,9 +171,11 @@ export default function MarkDownMain({ markdown, setMarkdown }: MarkDownMainProp
             </ReactMarkdown>
             <div className="absolute top-0 right-0">
               <div className="flex items-center gap-2">
-
-              <TextToSpeech text={markdown} />
-              <FullScreenToggle targetRef={contentRef} />
+                {!isFullscreen && (
+                  <ResetEditorButton onReset={onReset} />
+                )}
+                <TextToSpeech text={markdown} />
+                <FullScreenToggle targetRef={contentRef} />
               </div>
             </div>
 
