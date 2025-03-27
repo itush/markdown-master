@@ -1,6 +1,7 @@
 
 import WordCounter from "./WordCounter";
 import UpDownLoad from "./UpDownLoad";
+import ExportToDocx from "./ExportToDocx";
 import { ModeToggle } from "./ModeToggle";
 import { Grip } from 'lucide-react';
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent } from "@radix-ui/react-dropdown-menu";
@@ -8,8 +9,7 @@ import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent } from "@radix-u
 interface MarkDownHeaderProps {
     markdown: string;
     setMarkdown: (markdown: string) => void;
-  }
-
+}
 
 export default function MarkDownHeader({ markdown, setMarkdown }: MarkDownHeaderProps) {
     // const [markdown, setMarkdown] = useState('');
@@ -34,30 +34,29 @@ export default function MarkDownHeader({ markdown, setMarkdown }: MarkDownHeader
 
                             <DropdownMenu >
                                 <DropdownMenuTrigger>
-                                    <Grip />
+                                    <Grip className="text-muted-foreground hover:text-foreground cursor-pointer"/>
                                 </DropdownMenuTrigger>
 
-                                <DropdownMenuContent align="end" className="gap-2">
-                                    <div className="text-sm text-muted-foreground">
-                                        <WordCounter markdown={markdown} />
-                                    </div>
-                                    <div className="text-sm text-muted-foreground">
+                                <DropdownMenuContent align="end" className="flex flex-col gap-2 text-sm text-muted-foreground">
+                                    
+                                        <WordCounter markdown={markdown} />                         
 
-                                    <UpDownLoad markdown={markdown} setMarkdown={setMarkdown} />
-                                    </div>
+                                        <UpDownLoad markdown={markdown} setMarkdown={setMarkdown} />
+                                  
+                                        <ExportToDocx markdown={markdown} />
+
                                 </DropdownMenuContent>
 
                             </DropdownMenu>
                         </div>
 
-
-
                         <div className="text-sm text-muted-foreground hidden md:block">
                             <WordCounter markdown={markdown} />
                         </div>
 
-                        <div className="text-sm text-muted-foreground hidden md:block">
+                        <div className="text-sm text-muted-foreground hidden md:flex">
                             <UpDownLoad markdown={markdown} setMarkdown={setMarkdown} />
+                            <ExportToDocx markdown={markdown} />
                         </div>
 
                         <ModeToggle />

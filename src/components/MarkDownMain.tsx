@@ -164,7 +164,7 @@ export default function MarkDownMain({ markdown, setMarkdown }: MarkDownMainProp
               remarkPlugins={[remarkGfm]}>
               {markdown}
             </ReactMarkdown>
-            <div className="absolute bottom-0 right-0">
+            <div className="absolute top-0 right-0">
               <FullScreenToggle targetRef={contentRef} />
             </div>
 

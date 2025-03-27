@@ -9,6 +9,7 @@ interface UpDownLoadProps {
     setMarkdown: (markdown: string) => void;
 }
 
+
 export default function UpDownLoad({ markdown, setMarkdown }: UpDownLoadProps) {
 
     const handleImport = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
@@ -47,7 +48,7 @@ export default function UpDownLoad({ markdown, setMarkdown }: UpDownLoadProps) {
 
     return (
         <>
-            <div className="md:flex items-center gap-2">
+            <div className=" md:flex gap-2">
 
                 <div>
                     <Button
@@ -61,9 +62,7 @@ export default function UpDownLoad({ markdown, setMarkdown }: UpDownLoadProps) {
                     </Button>
                 </div>
 
-
-
-                <div>
+                <div className="mt-2 md:mt-0">
                     <Button
                         variant="outline"
                         size="sm"
