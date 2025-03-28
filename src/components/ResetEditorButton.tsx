@@ -26,12 +26,12 @@ export default function ResetEditorButton({ onReset }: ResetEditorButtonProps) {
       {/* Trigger button */}
       <AlertDialogTrigger asChild>
         <Button
-          variant="destructive"
+          variant="outline"
           size="sm"          
           className="cursor-pointer flex items-center gap-1"
         >
           <RotateCcw size={16} />
-          <span>Reset Editor</span>
+          
         </Button>
       </AlertDialogTrigger>
 

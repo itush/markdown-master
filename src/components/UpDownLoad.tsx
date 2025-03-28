@@ -58,7 +58,7 @@ export default function UpDownLoad({ markdown, setMarkdown }: UpDownLoadProps) {
                         className="cursor-pointer"
                     >
                         <Upload className="h-4 w-4 mr-2" />
-                        Import
+                        MD
                     </Button>
                 </div>
 
@@ -70,7 +70,7 @@ export default function UpDownLoad({ markdown, setMarkdown }: UpDownLoadProps) {
                         className="cursor-pointer"
                     >
                         <Download className="h-4 w-4 mr-2" />
-                        Export
+                        MD
                     </Button>
                 </div>
 

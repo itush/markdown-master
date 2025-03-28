@@ -19,7 +19,7 @@ interface Heading {
 
 
 export function SideBar({ markdown, onHeadingClick }: TableOfContentsProps) {
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(true);
 
   // Extract headings from the markdown content
   const extractHeadings = useCallback((content: string): Heading[] => {
@@ -77,7 +77,7 @@ export function SideBar({ markdown, onHeadingClick }: TableOfContentsProps) {
       <Button
         variant="ghost"
         size="icon"
-        className="h-6 w-6 shrink-0 my-2"
+        className="h-6 w-6 shrink-0 my-2 cursor-pointer"
         onClick={() => setIsCollapsed(!isCollapsed)}
       >
         {isCollapsed ? (

@@ -52,7 +52,7 @@ export default function TextToSpeech({ text }: TextToSpeechProps) {
       {!isSpeaking ? (
         <button
           onClick={startReading}
-          className="flex items-center gap-1 p-2 border-2"
+          className="flex items-center gap-1 p-2 border-2 rounded-md cursor-pointer"
         >
           <Play size={16} />
           
@@ -62,7 +62,7 @@ export default function TextToSpeech({ text }: TextToSpeechProps) {
         
         <button
           onClick={stopReading}
-          className="flex items-center gap-1 p-2 border-2"
+          className="flex items-center gap-1 p-2 border-2 rounded-md cursor-pointer"
         >
           <StopCircle size={16} />
           
