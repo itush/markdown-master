@@ -2,7 +2,7 @@ import Link from "next/link"
 
 export default function Footer() {
   return (
-    <footer className="flex border-t mt-4 gap-2 justify-center 
+    <footer className="flex border-t gap-2 justify-center 
     text-center text-sm text-slate-600">
       <p>Status: 🟠 WIP | </p>
 

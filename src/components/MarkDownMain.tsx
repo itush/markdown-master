@@ -142,7 +142,7 @@ export default function MarkDownMain({ markdown, setMarkdown, onReset }: MarkDow
 
   return (
     // The Tabs parent should span the full available height/width between header and footer.
-    <main className="flex h-[800px]">
+    <main className="flex h-[840px]">
 
       <SideBar markdown={markdown} onHeadingClick={scrollToHeading} />
 
